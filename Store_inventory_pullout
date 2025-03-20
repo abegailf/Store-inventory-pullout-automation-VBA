@@ -1,16 +1,28 @@
-Sub StorePulloutV4()
+Sub StorePullout()
     Dim wsInput As Worksheet, wsOutput As Worksheet
     Dim lastRow As Long, lastCol As Long, skuRow As Long, storeCol As Long
     Dim quantityNeeded As Long, pulledQuantity As Long, storeInventory As Variant
     Dim outputRow As Long, i As Long, j As Long
     Dim stores() As Variant, storeCount As Long, temp As Variant
+    Dim sheetName As String
+
+    ' Allow user to select the input sheet
+    On Error Resume Next
+    sheetName = Application.InputBox("Select the input sheet by clicking on any cell in the sheet:", "Select Input Sheet", Type:=8).Parent.Name
+    On Error GoTo 0
+
+    ' Check if the user canceled the input box
+    If sheetName = "" Then
+        MsgBox "No sheet selected. Macro canceled.", vbExclamation
+        Exit Sub
+    End If
 
     ' Set input sheet
     On Error Resume Next
-    Set wsInput = ThisWorkbook.Sheets("STORE PULLOUT INPUT")
+    Set wsInput = ThisWorkbook.Sheets(sheetName)
     On Error GoTo 0
     If wsInput Is Nothing Then
-        MsgBox "Input sheet not found.", vbExclamation
+        MsgBox "The selected sheet was not found.", vbExclamation
         Exit Sub
     End If
 
@@ -92,6 +104,3 @@ NextRow:
     wsOutput.Columns.AutoFit
     MsgBox "Inventory pullout completed! Check the 'STORE PULLOUT OUTPUT' sheet.", vbInformation
 End Sub
-
-
-
