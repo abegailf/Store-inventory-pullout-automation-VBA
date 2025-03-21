@@ -101,6 +101,12 @@ NextRow:
         outputRow = outputRow + 1
     Next skuRow
 
+    ' Rotate text in columns G to AC (first row) 90 degrees upward
+    With wsOutput.Range("G1:AC1")
+        .Orientation = 90 ' Rotate text 90 degrees upward
+        .VerticalAlignment = xlTop ' Align text to the top
+    End With
+
     wsOutput.Columns.AutoFit
     MsgBox "Inventory pullout completed! Check the 'STORE PULLOUT OUTPUT' sheet.", vbInformation
 End Sub
