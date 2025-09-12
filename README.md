@@ -1,2 +1,1 @@
-# ExcelVBAs
-Compilation of all my excel VBAs and templates for task automation and optimization
+For this project, I automated a "store pullout" report that was so manual it used to take a full day to complete. I wrote a custom Excel VBA script that handles the entire complex logic—from sorting thousands of rows to distributing inventory evenly across different stores. What was once an 8-hour task is now a one-click process that generates a perfect, error-free report in just a few minutes. This is a clear example of how I use VBA to build high-impact automation solutions.
